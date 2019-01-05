@@ -1,0 +1,41 @@
+a {color: #000000; text-decoration: none;}
+.header { font-family: "Calibri","Ubuntu Light";}
+.font   { font-family: "Calibri","Ubuntu Light";}
+.main{}
+
+.post_add {
+    font-family: "Calibri","Ubuntu Light";
+    border: 1;
+    width: 280px;
+    background: ;
+    align: right;
+    position: fixed;
+    }
+
+.button{
+background: black;
+color: white;
+border-radius: 100%;
+border: solid #2B2B2B 3px;
+}
+
+.button:focus {    outline: none;    background: #2B2B2B;}
+
+.posts{align="left";margin-left:350px;}
+
+.post{
+    max-height:20%;
+    font-family: "Calibri","Ubuntu Light";
+    border: solid rgba(0,0,0,0.6) 1px ;
+    padding: 0px;
+    position: ;
+    box-shadow: 7px 7px 5px rgba(0,0,0,0.6);
+    }
+
+.fixform{border: 0px;}
+
+.post:hover{}
+
+.delete{background: white;border: 0px}
+
+.delete:hover{color: red;}

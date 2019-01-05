@@ -1,0 +1,37 @@
+Описание (Доделать)
+Поиск (настроить)
+Авторизация (Доделать)
+
+Довести до кондиции
+_________________________________________________________________________________
+user1
+1porolka
+
+immir
+pass1234
+____________________________________________________________________________________
+def find(request):
+    test = 0
+#    test = AllForm(request.POST).data.get('find')
+    posts = Post.objects.order_by('-id')
+    post = {'post': posts, 'form': AllForm(), 'test': test}
+    if request.method == 'POST':
+        find = AllForm(request.POST)
+        test = 1
+        if find.is_valid():
+            test = 2
+            posts = Post.objects.filter(name=find.data.get('find'))
+            post = {'post': posts, 'form': AllForm(),'find': AllForm(), 'test': test}
+            test = find.data.get('findform')
+
+    return render(request, 'main.html', post)
+___________________________________________________________________________________
+.post:hover::after {
+    content: attr(data-title); /* Выводим текст */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    text-align: center; /* Выравнивание текста по центру */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 16px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    font-style: italic;
+}

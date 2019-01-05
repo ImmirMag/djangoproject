@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div style="font-family: 'Calibri','Ubuntu Light';">
+    <table border="0" width="100%">
+        <tr>
+            <th width="33%"></th>
+
+            <th style="background: #C8F4F2"><p>
+            <font size="30px"> Authentication </font> <br>
+
+                <form action="/check/" method="post">
+                    {% csrf_token %}
+            Login  <br>{{authform.login}} <br> <p></p>
+            Password <br>{{authform.password}} <br> <p></p>
+                <button type="submit"> Send </button> <br> <p></p>
+                </form>
+
+
+            </th>
+
+            <th width="33%" align="right">
+
+            </th>
+        </tr>
+    </table>
+</div>
+
+
+
+
+</body>
+</html>

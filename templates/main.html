@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <script type="text/javascript" src="{% static 'js/changedata.js' %}"></script>
+    <title>Data Base for All</title>
+</head>
+<body>
+
+
+<div class="header">
+    <table border="0" width="100%">
+        <tr>
+            <th width="33%">
+                <div align="left" style="font-weight: normal">
+                    <font size="5px">
+                        <a href="/check/">Login: {{login}}</a>
+                    </font>
+                </div>
+            </th>
+
+            <th><a href="/main/1/"> <font size="30px">Data Base for All </font> </a></th>
+
+            <th width="33%" align="right">
+                <form action="/find/" method="post">
+                    {% csrf_token %}{{ form.find }} <button type="submit"> 🔍 </button>
+                </form>
+            </th>
+        </tr>
+    </table>
+</div>
+
+
+    <div class="main">
+
+<div class="post_add" align="left">
+    <form action="/add/" method="post" align="right">
+        {% csrf_token %}
+        Фамилия
+        {{ form.surname }} <p>
+        Имя
+        {{ form.name }} <p>
+        Отчество
+        {{ form.fathername }} <p>
+        Телефон
+        {{ form.phone }} <p>
+        Описание
+        {{ form.description }} <p>
+        <button class="button" type="submit">
+            <font size="2px" color="black">.</font><font size="6px">+</font><font size="2px"  color="black">.</font></button> <br>
+    </form>
+</div>
+
+<p>
+
+<div id="posts" class="posts">
+    {% for post in post %}
+<div id={{post.id}} class="post" title="">
+
+ <table border="0" width="100%" >
+   <tr>
+    <th width="100px" ><div align="left"><b>#{{post.id}}</b></div></th>
+
+    <th width="700px"><div align="left">
+        <input class="fixform" onchange="addcookie('{{post.id}}','surname',this.value)" type="text" value={{post.surname}}>
+        <input class="fixform" onchange="addcookie('{{post.id}}','name',this.value)" type="text" value={{post.name}}>
+        <input class="fixform" onchange="addcookie('{{post.id}}','fathername',this.value)" type="text" value={{post.fathername}}></div></th>
+
+    <th>
+        <div align="left">
+            Телефон: 
+            <input class="fixform" onchange="addcookie('{{post.id}}','phone',this.value)" type="tel" pattern='2-[0-9]{3}-[0-9]{3}' value= {{post.phone}}>
+        </div>
+    </th>
+
+       <th width="200px">
+           <div align="left">
+               {{post.date}}
+           </div>
+       </th>
+
+       <th width="3px" align="right">
+       <button class="delete" onclick="addcookie('{{post.id}}','delete','delete');
+        deletepost('{{post.id}}')">✖</button>
+       </th>
+   </tr>
+
+<!--     <tr  rowspan="2"><th>{{post.description}}</th></tr> -->
+ </table>
+
+</div>
+<p>
+    {% endfor %}
+
+<div>
+        {% for i in count  %}
+        <a href="/main/{{i}}"> <button> {{i}} </button> </a>
+        {% endfor %}
+</div>
+
+</div>
+</body>
+</html>
